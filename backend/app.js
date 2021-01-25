@@ -12,7 +12,7 @@
   const app = express();//Inicializar ExpressObject
 
 //Inicializar la conexion al servicio de MongoDBAtlas.
-  mongoose.connect('mongodb+srv://mean-course:OmbMe2Q8Kp5bG59D@meancourse.jn7zy.mongodb.net/MEANCourse')
+  mongoose.connect(process.env.MONGO_ATLAS_CONNECTION)
   .then(()=>{
     console.log('Conected to Database');
   })

@@ -1,0 +1,10 @@
+{
+    "env":{
+        "DEFAULT_PORT":"4202",
+        "DEFAULT_IP": "192.168.100.8",
+        "SERVICE_URL": "http://192.168.100.8:4202",
+        "MONGO_ATLAS_CONNECTION":"mongodb+srv://mean-course:OmbMe2Q8Kp5bG59D@meancourse.jn7zy.mongodb.net/MEANCourse",
+        "MONGO_ATLAS_PASSWORD": "OmbMe2Q8Kp5bG59D",
+        "JWT_KEY": "secret_this_should_be_longer"
+    }
+}

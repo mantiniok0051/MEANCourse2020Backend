@@ -34,8 +34,7 @@ exports.createPost = (request, response, next)=>{
 exports.updatePost = (request, response, next)=>{
         let imagePath = request.body.imagePath;
         if (request.file) {
-            const url =  request.protocol + '://' + '192.168.100.8:4202';
-            imagePath = url + '/imgs/' + request.file.filename;
+            imagePath = process.env.SERVICE_URL + '/imgs/' + request.file.filename;
         }
         const updated_post = new Post({
             _id: request.body.id,
@@ -46,7 +45,7 @@ exports.updatePost = (request, response, next)=>{
         });
         Post.updateOne({_id:request.params.target_id, creator:request.userData.usrID},
                         updated_post).then(result =>{
-                        if (result.nModified > 0) {
+                        if (result.n > 0) {
                             response.status(200).json({message:'Post Updated'});
                         } else {
                             response.status(401).json({message:'Not authorized to update this post'});
@@ -54,7 +53,8 @@ exports.updatePost = (request, response, next)=>{
                         })
                         .catch(error=>{
                         response.status(500).json({
-                            message:'Culdn\'t update the post'
+                            message:'Culdn\'t update the post',
+                            error: error
                         });
                         });
 }
@@ -82,12 +82,12 @@ exports.loadAllPost =(request, response, next) => {
             totalStoredPosts: count
     });
         })
-    .catch(err => {
+    .catch(error => {
           console.log('Connection to data service failed: ');
-          console.log(err);
-          response.status(400).json({
+          console.log(error);
+          response.status(500).json({
             message: 'Connection to data service failed',
-            error: err
+            error: error
           });
         });
   }

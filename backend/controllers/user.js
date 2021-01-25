@@ -1,7 +1,7 @@
 const User = require('../models/user');//Crear controlador de db-table con mongo y el modelo
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-
+ 
 
 
 //Registrar un nuevo usuario
@@ -52,7 +52,7 @@ exports.loginUser = (request, response, next)=>{
         }
         const token = jwt.sign({
           email: verificated_user.email, userID: verificated_user._id},
-          'secret_this_should_be_longer',
+          process.env.JWT_KEY,
           {expiresIn:'1h'});
           console.log('User authentication successfull');
           response.status(200).json({
