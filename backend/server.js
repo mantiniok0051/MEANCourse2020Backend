@@ -1,6 +1,6 @@
 'use strict'//Activar modo estricto y funcionalidades ECMA-SCRIPT 5-6
 
-const app = require('./backend/app');
+const app = require('./app');
 const debug = require('debug')('node-angular'); // DEBUG:
 const http= require('http');
 //const port = ;
