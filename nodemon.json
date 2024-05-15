@@ -1,10 +1,10 @@
 {
     "env":{
         "DEFAULT_PORT":"4202",
-        "DEFAULT_IP": "192.168.100.8",
-        "SERVICE_URL": "http://192.168.100.8:4202",
+        "DEFAULT_IP": "",
+        "SERVICE_URL": "",
         "MONGO_ATLAS_CONNECTION":"",
         "MONGO_ATLAS_PASSWORD": "",
-        "JWT_KEY": "secret_this_should_be_longer"
+        "JWT_KEY": ""
     }
 }
